@@ -1,3 +1,8 @@
+#DEFINES += MOONLIGHT_LIBRARY_BUILD
+#TEMPLATE = lib
+#CONFIG += dll
+TEMPLATE = app
+
 QT += core quick network quickcontrols2 svg
 CONFIG += c++11
 
@@ -18,8 +23,6 @@ win32|macx {
         CONFIG += qtquickcompiler
     }
 }
-
-TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -198,6 +201,8 @@ HEADERS += \
     backend/nvaddress.h \
     backend/nvapp.h \
     cli/pair.h \
+    export.h \
+    moonlight.h \
     settings/compatfetcher.h \
     settings/mappingfetcher.h \
     utils.h \

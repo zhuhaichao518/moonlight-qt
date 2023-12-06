@@ -22,6 +22,10 @@
 #include "streaming/video/ffmpeg.h"
 #endif
 
+#ifdef MOONLIGHT_LIBRARY_BUILD
+#include "moonlight.h"
+#endif
+
 #if defined(Q_OS_WIN32)
 #include "antihookingprotection.h"
 #elif defined(Q_OS_LINUX)
@@ -274,7 +278,11 @@ LONG WINAPI UnhandledExceptionHandler(struct _EXCEPTION_POINTERS *ExceptionInfo)
 
 #endif
 
+#ifdef MOONLIGHT_LIBRARY_BUILD
+int startapp(int argc, char *argv[])
+#else
 int main(int argc, char *argv[])
+#endif
 {
     SDL_SetMainReady();
 
@@ -284,9 +292,9 @@ int main(int argc, char *argv[])
     // Set these here to allow us to use the default QSettings constructor.
     // These also ensure that our cache directory is named correctly. As such,
     // it is critical that these be called before Path::initialize().
-    QCoreApplication::setOrganizationName("Moonlight Game Streaming Project");
-    QCoreApplication::setOrganizationDomain("moonlight-stream.com");
-    QCoreApplication::setApplicationName("Moonlight");
+    QCoreApplication::setOrganizationName("Cloud play Plus");
+    QCoreApplication::setOrganizationDomain("cloudplayplus.com");
+    QCoreApplication::setApplicationName("Cloud play Plus");
 
     if (QFile(QDir::currentPath() + "/portable.dat").exists()) {
         QSettings::setDefaultFormat(QSettings::IniFormat);

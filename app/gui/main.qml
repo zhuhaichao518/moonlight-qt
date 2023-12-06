@@ -353,8 +353,8 @@ ApplicationWindow {
                 }
 
                 Component.onCompleted: {
-                    AutoUpdateChecker.onUpdateAvailable.connect(updateAvailable)
-                    AutoUpdateChecker.start()
+                    // AutoUpdateChecker.onUpdateAvailable.connect(updateAvailable)
+                    // AutoUpdateChecker.start()
                 }
 
                 Keys.onDownPressed: {
