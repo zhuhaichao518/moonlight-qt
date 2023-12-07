@@ -1,7 +1,8 @@
-#DEFINES += MOONLIGHT_LIBRARY_BUILD
-#TEMPLATE = lib
-#CONFIG += dll
-TEMPLATE = app
+DEFINES += MOONLIGHT_LIBRARY_BUILD
+TEMPLATE = lib
+CONFIG += dll
+
+#TEMPLATE = app
 
 QT += core quick network quickcontrols2 svg
 CONFIG += c++11

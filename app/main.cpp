@@ -279,7 +279,7 @@ LONG WINAPI UnhandledExceptionHandler(struct _EXCEPTION_POINTERS *ExceptionInfo)
 #endif
 
 #ifdef MOONLIGHT_LIBRARY_BUILD
-int startapp(int argc, char *argv[])
+int startapp(int argc,char *argv[])
 #else
 int main(int argc, char *argv[])
 #endif
@@ -674,6 +674,7 @@ int main(int argc, char *argv[])
         {
             initialView = "qrc:/gui/CliStartStreamSegue.qml";
             StreamingPreferences* preferences = new StreamingPreferences(&app);
+            preferences->enableMdns = false;
             StreamCommandLineParser streamParser;
             streamParser.parse(app.arguments(), preferences);
             QString host    = streamParser.getHost();
