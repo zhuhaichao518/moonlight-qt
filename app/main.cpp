@@ -675,6 +675,7 @@ int main(int argc, char *argv[])
             initialView = "qrc:/gui/CliStartStreamSegue.qml";
             StreamingPreferences* preferences = new StreamingPreferences(&app);
             preferences->enableMdns = false;
+            preferences->windowMode = StreamingPreferences::WM_WINDOWED;
             StreamCommandLineParser streamParser;
             streamParser.parse(app.arguments(), preferences);
             QString host    = streamParser.getHost();

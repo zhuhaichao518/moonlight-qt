@@ -630,6 +630,10 @@ bool Session::initialize()
         break;
     }
 
+    m_StreamConfig.videoPort = m_Preferences->videoStreamPort;
+    m_StreamConfig.audioPort = m_Preferences->audioStreamPort;
+    m_StreamConfig.inputPort = m_Preferences->inputStreamPort;
+
     LiInitializeAudioCallbacks(&m_AudioCallbacks);
     m_AudioCallbacks.init = arInit;
     m_AudioCallbacks.cleanup = arCleanup;

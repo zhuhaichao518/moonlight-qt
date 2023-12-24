@@ -45,6 +45,9 @@
 #define SER_CAPTURESYSKEYS "capturesyskeys"
 #define SER_KEEPAWAKE "keepawake"
 #define SER_LANGUAGE "language"
+#define SER_VIDEOPORT "videoStreamPort"
+#define SER_AUDIOPORT "audioStreamPort"
+#define SER_INPUTPORT "inputStreamPort"
 
 #define CURRENT_DEFAULT_VER 2
 
@@ -123,6 +126,11 @@ void StreamingPreferences::reload()
     language = static_cast<Language>(settings.value(SER_LANGUAGE,
                                                     static_cast<int>(Language::LANG_AUTO)).toInt());
 
+    videoStreamPort = settings.value(SER_VIDEOPORT, 10474).toInt();
+
+    audioStreamPort = settings.value(SER_AUDIOPORT, 10475).toInt();
+
+    inputStreamPort = settings.value(SER_INPUTPORT, 10476).toInt();
 
     // Perform default settings updates as required based on last default version
     if (defaultVer < 1) {

@@ -374,6 +374,9 @@ void StreamCommandLineParser::parse(const QStringList &args, StreamingPreference
     parser.addChoiceOption("capture-system-keys", "capture system key combos", m_CaptureSysKeysModeMap.keys());
     parser.addChoiceOption("video-codec", "video codec", m_VideoCodecMap.keys());
     parser.addChoiceOption("video-decoder", "video decoder", m_VideoDecoderMap.keys());
+    parser.addValueOption("video-port", "video port");
+    parser.addValueOption("audio-port", "audio port");
+    parser.addValueOption("controller-port", "controller port");
 
     if (!parser.parse(args)) {
         parser.showError(parser.errorText());
@@ -498,6 +501,26 @@ void StreamCommandLineParser::parse(const QStringList &args, StreamingPreference
     // Resolve --video-decoder option
     if (parser.isSet("video-decoder")) {
         preferences->videoDecoderSelection = mapValue(m_VideoDecoderMap, parser.getChoiceOptionValue("video-decoder"));
+    }
+
+    // Resolve --videoStreamPort option
+    if (parser.isSet("video-port")) {
+        preferences->videoStreamPort = parser.getIntOption("video-port");
+    }else{
+        preferences->videoStreamPort = 10474;
+    }
+
+    // Resolve --audioStreamPort option
+    if (parser.isSet("audio-port")) {
+        preferences->audioStreamPort = parser.getIntOption("audio-port");
+        preferences->videoStreamPort = 10475;
+    }
+
+    // Resolve --controllerStreamPort option
+    if (parser.isSet("input-port")) {
+        preferences->inputStreamPort = parser.getIntOption("input-port");
+    }else{
+        preferences->inputStreamPort = 10476;
     }
 
     // This method will not return and terminates the process if --version or

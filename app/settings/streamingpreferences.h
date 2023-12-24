@@ -172,6 +172,9 @@ public:
     UIDisplayMode uiDisplayMode;
     Language language;
     CaptureSysKeysMode captureSysKeysMode;
+    int videoStreamPort;
+    int audioStreamPort;
+    int inputStreamPort;
 
 signals:
     void displayModeChanged();
